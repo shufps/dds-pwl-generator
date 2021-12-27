@@ -1,6 +1,6 @@
 # dds-pwl-generator
 
-DDS Generator with adjustable DAC voltage, sampling frequency, target frequency, quantisation.
+DDS Generator with adjustable DAC voltage, sampling frequency, target frequency, quantisation, duration.
 
 It outputs a PWL file that can be fed into LTSpice.
 
