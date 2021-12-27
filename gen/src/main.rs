@@ -3,7 +3,7 @@ use std::fs::File;
 use std::io::Write;
 
 const DDS_FREQ : f64 = 1_000.0;         // Hz
-const SAMPLING_RATE : f64 = 22_050.0;   // Hz
+const SAMPLING_RATE : f64 = 44_100.0;   // Hz
 const BITS_ADC : u32 = 12;              // bits
 const VOLTS_ADC : f64 = 3.3;            // V
 const DURATION : f64 = 100.0;           // ms
@@ -18,8 +18,8 @@ fn main() {
         dds_table[i] = (2.0 * consts::PI / TABLE_SIZE as f64 * i as f64).sin();
         // println!("{} {:.6}", i, dds_table[i]);
     }
-
-    let steps = (DURATION * SAMPLING_RATE) as usize;
+ 
+    let steps = (DURATION / 1000.0 * SAMPLING_RATE) as usize;
     let mut akku = 0_u64;
     let akku_inkr = (DDS_FREQ / SAMPLING_RATE * TABLE_SIZE as f64 * (1_u64<<32) as f64).ceil() as u64;
     // println!("{:016x}", akku_inkr);
