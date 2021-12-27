@@ -32,7 +32,7 @@ fn main() {
         akku += akku_inkr;
         let index = (akku as usize >> 32) & (TABLE_SIZE - 1);
         let mut data = dds_table[index] * VOLTS_DAC / 2.0 + VOLTS_DAC / 2.0;
-        // ADC quantisierung
+        // DAC quantization
         let q = VOLTS_DAC / (1<<BITS_DAC) as f64;
         data = (data / q).ceil() * q;
         let _ = writeln!(&mut w, "{}n {:.6}", time-1, last);     // creates nice steps
